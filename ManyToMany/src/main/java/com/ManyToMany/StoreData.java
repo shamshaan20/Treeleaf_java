@@ -10,7 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class StoreData {
     public static void main(String[] args) {
 
-        StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("src/main/java/hibernate.cfg.xml").build();
+        StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("src/main/java/com/hibernate.cfg.xml").build();
         Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
         SessionFactory factory=meta.getSessionFactoryBuilder().build();
         Session session=factory.openSession();

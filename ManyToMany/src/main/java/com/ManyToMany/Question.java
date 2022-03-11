@@ -1,4 +1,5 @@
 package com.ManyToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
@@ -21,7 +22,7 @@ public class Question {
     public List<Answer> getAnswers() {
         return answers;
     }
-    public void setAnswers(List<Answer> answers) {
+    public void setAnswers(ArrayList<Answer> answers) {
         this.answers = answers;
     }
 }
