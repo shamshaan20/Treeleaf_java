@@ -1,4 +1,4 @@
-package com.OneToMany.OTM;
+package com.diwash.OneToMany;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
