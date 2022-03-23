@@ -11,8 +11,6 @@ public class Manufactures {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    // One manufactures can produces
-    // multiple models of the bike
     private  String manufactures_name;
 
     @OneToMany(mappedBy ="ob")
