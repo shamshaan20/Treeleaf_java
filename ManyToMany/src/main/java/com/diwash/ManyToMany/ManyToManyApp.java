@@ -3,7 +3,6 @@ package com.diwash.ManyToMany;
 import com.diwash.ManyToMany.Models.Employee;
 import com.diwash.ManyToMany.Models.Project;
 import com.diwash.ManyToMany.repository.EmployeeRepository;
-import com.diwash.ManyToMany.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
