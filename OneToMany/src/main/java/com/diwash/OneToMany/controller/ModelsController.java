@@ -22,13 +22,13 @@ public class ModelsController {
         return modelRepository.findAll();
     }
 
-    // create employee REST API
+    // create models REST API
     @PostMapping
     public Model createModel(@RequestBody Model model) {
         return modelRepository.save(model);
     }
 
-    // get employee by id REST API
+    // get models by id REST API
     @GetMapping("{id}")
     public ResponseEntity<Model> getModelById(@PathVariable  long id){
         Model model = modelRepository.findById((int) id)
@@ -36,7 +36,7 @@ public class ModelsController {
         return ResponseEntity.ok(model);
     }
 
-    // update employee REST API
+    // update models REST API
     @PutMapping("{id}")
     public ResponseEntity<Model> updateModel(@PathVariable long id,@RequestBody Model modelDetails) {
         Model updateModel = modelRepository.findById((int) id)

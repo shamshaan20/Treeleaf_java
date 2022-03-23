@@ -22,13 +22,13 @@ public class ManufacturesController {
         return manufacturesRepository.findAll();
     }
 
-    // create employee REST API
+    // create Manufactures REST API
     @PostMapping
     public Manufactures createManufactures(@RequestBody Manufactures manufactures) {
         return manufacturesRepository.save(manufactures);
     }
 
-    // get employee by id REST API
+    // get Manufactures by id REST API
     @GetMapping("{id}")
     public ResponseEntity<Manufactures> getManufacturesById(@PathVariable  long id){
         Manufactures manufactures = manufacturesRepository.findById((int) id)
@@ -36,7 +36,7 @@ public class ManufacturesController {
         return ResponseEntity.ok(manufactures);
     }
 
-    // update employee REST API
+    // update Manufactures REST API
     @PutMapping("{id}")
     public ResponseEntity<Manufactures> updateManufactures(@PathVariable long id,@RequestBody Manufactures manufactures) {
         Manufactures updateManufactures = manufacturesRepository.findById((int) id)
