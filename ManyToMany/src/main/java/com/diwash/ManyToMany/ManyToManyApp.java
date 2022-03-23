@@ -33,8 +33,8 @@ public class ManyToManyApp implements CommandLineRunner {
 
 		// employee can work on two projects,  Add project references in the employee
 		employee.getProjects().add(project);
-		employee.getProjects().add(project1);
 		employee1.getProjects().add(project);
+		employee.getProjects().add(project1);
 		employee1.getProjects().add(project1);
 
 		// Add employee reference in the projects
