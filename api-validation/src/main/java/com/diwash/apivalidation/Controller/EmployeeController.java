@@ -7,8 +7,10 @@ import java.util.Map;
 
 import com.diwash.apivalidation.Model.Employee;
 import com.diwash.apivalidation.Repository.EmployeeRepository;
+import com.diwash.apivalidation.Service.EmployeeService;
 import com.diwash.apivalidation.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private EmployeeService employeeService;
+
+    //Using list to get all the employee from employeerepository
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -35,19 +41,19 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public Employee createEmployee(@Valid @RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+    public ResponseEntity<Employee> createEmployee(@Valid @RequestBody Employee employee){
+        Employee savedEmployee = employeeService.createEmployee(employee);
+        return new ResponseEntity<Employee>(savedEmployee, HttpStatus.CREATED);
     }
-
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
                                                    @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
 
-        employee.setEmailId(employeeDetails.getEmailId());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setFirstName(employeeDetails.getFirstName());
+        employee.setName(employeeDetails.getName());
+        employee.setEmail(employeeDetails.getEmail());
+        employee.setPassword(employeeDetails.getPassword());
         final Employee updatedEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok(updatedEmployee);
     }

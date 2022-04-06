@@ -1,86 +1,70 @@
 package com.diwash.apivalidation.Model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "employees")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
-    @Size(min = 4, message = "First Name should have atleast 4 characters")
-    private String firstName;
+    @Column(name = "name", nullable = false)
 
-    @NotNull
-    @Size(min = 4, message = "Last Name should have atleast 4 characters")
-    private String lastName;
+    // user name should not be null or empty
+    // user name should have at least 4 characters
+    @NotEmpty
+    @Size(min = 4, message = "user name should have at least 4 characters")
+    private String name;
 
+    // email should be a valid email format
+    // email should not be null or empty
+
+    @NotEmpty
     @Email
-    @NotBlank
-    private String emailId;
+    private String email;
 
-    @NotNull
-    @Size(min = 2, message = "Password should have atleast 4 characters")
+    // password should not be null or empty
+    // password should have at least 8 characters
+
+    @NotEmpty
+    @Size(min = 8, message = "password should have at least 8 characters")
     private String password;
 
     public Employee() {
 
     }
 
-    public Employee(String firstName, String lastName, String emailId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailId = emailId;
+    public Employee(String name, String email, String password) {
+        super();
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
-    @Column(name = "first_name", nullable = false)
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    @Column(name = "last_name", nullable = false)
-    public String getLastName() {
-        return lastName;
+    public String getEmail() {
+        return email;
     }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    @Column(name = "email_address", nullable = false)
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
-    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
-
-    public void getPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
